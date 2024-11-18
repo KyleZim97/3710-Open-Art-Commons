@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-5">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @artist %>
+  <%= render @artist %>
 
-<div>
-  <%= link_to "Edit this artist", edit_artist_path(@artist) %> |
-  <%= link_to "Back to artists", artists_path %>
+  <div>
+    <%= link_to "Edit this artist", edit_artist_path(@artist) %> |
+    <%= link_to "Back to artists", artists_path %>
 
-  <%= button_to "Destroy this artist", @artist, method: :delete %>
+    <%= button_to "Destroy this artist", @artist, method: :delete %>
+  </div>
 </div>
