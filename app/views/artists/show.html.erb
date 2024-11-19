@@ -3,8 +3,16 @@
 
   <%= render @artist %>
 
+  <h2>Art</h2>
+  <% for art in @artist.arts %>
+      <ul>
+        <li><%= art.title %></li>
+    </ul>
+  <% end %>
+
   <div>
     <%= link_to "Edit this artist", edit_artist_path(@artist) %> |
+    <%= link_to 'Add art', artist_arts_path(@artist) %> |
     <%= link_to "Back to artists", artists_path %>
 
     <%= button_to "Destroy this artist", @artist, method: :delete %>

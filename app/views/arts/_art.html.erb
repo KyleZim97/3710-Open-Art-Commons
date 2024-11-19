@@ -1,0 +1,43 @@
+<div id="<%= dom_id art %>">
+  <p>
+    <strong>Artist:</strong>
+    <%= art.artist.username %>
+  </p>
+
+  <p>
+    <strong>Show Artist:</strong>
+    <%= link_to 'Show Shark', [@artist] %>
+  </p>
+
+
+  <p>
+    <strong>Title:</strong>
+    <%= art.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= art.description %>
+  </p>
+
+  <p>
+    <strong>Tags:</strong>
+    <%= art.tags %>
+  </p>
+
+  <p>
+    <strong>Category:</strong>
+    <%= art.category %>
+  </p>
+
+  <p>
+    <strong>License type:</strong>
+    <%= art.license_type %>
+  </p>
+
+  <p>
+    <strong>Download count:</strong>
+    <%= art.download_count %>
+  </p>
+
+</div>

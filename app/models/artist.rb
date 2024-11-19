@@ -6,6 +6,9 @@ class Artist < ApplicationRecord
   
   # constants
     # none yet
+
+  # relationships
+  has_many :arts , dependent: :destroy
   
   # validations
   validates :username, presence: true

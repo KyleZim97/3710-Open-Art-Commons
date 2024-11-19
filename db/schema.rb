@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_14_213821) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_18_221746) do
   create_table "artists", force: :cascade do |t|
     t.string "username"
     t.text "about_artist"
@@ -26,4 +26,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_14_213821) do
     t.index ["reset_password_token"], name: "index_artists_on_reset_password_token", unique: true
   end
 
+  create_table "arts", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "tags"
+    t.string "category"
+    t.string "license_type"
+    t.integer "download_count"
+    t.integer "artist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_arts_on_artist_id"
+  end
+
+  add_foreign_key "arts", "artists"
 end
