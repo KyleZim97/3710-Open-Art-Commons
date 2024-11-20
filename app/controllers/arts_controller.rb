@@ -53,7 +53,7 @@ class ArtsController < ApplicationController
     @art.destroy!
 
     respond_to do |format|
-      format.html { redirect_to artist_art_path(@artist), status: :see_other, notice: "Art was successfully destroyed." }
+      format.html { redirect_to artist_arts_path(@artist), status: :see_other, notice: "Art was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -71,6 +71,6 @@ class ArtsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def art_params
-      params.require(:art).permit(:title, :description, :tags, :category, :license_type, :download_count, :artist_id)
+      params.require(:art).permit(:title, :description, :tags, :category, :license_type, :download_count, :artist_id, :art_image)
     end
 end
