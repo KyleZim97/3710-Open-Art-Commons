@@ -32,8 +32,8 @@
   </div>
 
   <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.text_field :category %>
+    <%= form.label :category, "Art/Photo Category", class: "form-label" %>
+    <%= form.select :category, options_for_select(['Physic Art', 'Photography', 'Digital Art', 'Sculpture']), { include_blank: 'Choose a category' }, class: "form-select" %>
   </div>
 
   <div>

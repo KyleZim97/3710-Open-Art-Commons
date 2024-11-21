@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-3">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @art %>
+  <%= render @art %>
 
-<div>
-  <%= link_to "Edit this art", edit_artist_art_path(@artist, @art) %> |
-  <%= link_to "Back to arts", artist_art_path(@artist) %>
-
-  <%= button_to "Destroy this art", artist_art_path(@artist, @art), method: :delete %>
+  <div>
+    <% if artist_signed_in? && current_artist == @artist %>
+      <%= link_to "Edit this art", edit_artist_art_path(@artist, @art) %>
+      <%= button_to "Destroy this art", artist_art_path(@artist, @art), method: :delete, data: { confirm: "Are you sure you want to delete this art?" } %>
+    <% end %>
+  </div>
 </div>

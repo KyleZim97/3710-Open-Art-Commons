@@ -4,6 +4,7 @@ class ArtistsController < ApplicationController
   # GET /artists or /artists.json
   def index
     @artists = Artist.all
+    @arts = Art.all
   end
 
   # GET /artists/1 or /artists/1.json

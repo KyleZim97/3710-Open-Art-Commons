@@ -58,10 +58,36 @@ class ArtsController < ApplicationController
     end
   end
 
+  def search
+    @arts = Art.all
+  
+    if params[:description].present?
+      @arts = @arts.where("description LIKE ?", "%#{params[:description]}%")
+    end
+  
+    if params[:category].present?
+      @arts = @arts.where("category LIKE ?", "%#{params[:category]}%")
+    end
+  
+    if params[:tags].present?
+      @arts = @arts.where("tags LIKE ?", "%#{params[:tags]}%")
+    end
+  
+    if params[:artist_name].present?
+      @arts = @arts.joins(:artist).where("artists.username LIKE ?", "%#{params[:artist_name]}%")
+    end
+  
+    render 'artists/index'
+  end
+
   private
     # creates a local @artist instance variable by finding a artist instance by artist_id
     def get_artist
-      @artist = Artist.find(params[:artist_id])
+      if params[:artist_id].present?
+        @artist = Artist.find(params[:artist_id])
+      else
+        @artist = nil
+      end
     end
 
     # Use callbacks to share common setup or constraints between actions.

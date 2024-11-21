@@ -1,48 +1,15 @@
-<div id="<%= dom_id art %>">
+<div id="<%= dom_id art %>" >
   <p>
     <strong>Artist:</strong>
     <%= art.artist.username %>
   </p>
-  
-  <div class="container mt-3">
-    <h3>Modal Example</h3>
-    <p>Click on the button to open the modal.</p>
-    
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-      Open modal
-    </button>
-  </div>
 
   <p>
-  <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <p>
-            <% if art.art_image.present? %>
-              <%= image_tag art.art_image %>
-            <% end %>
-          </p>
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
+    <% if art.art_image.present? %>
+      <%= image_tag art.art_image %>
+    <% end %>
   </p>
+  
   <p>
     <strong>Show Artist:</strong>
     <%= link_to 'Show Artist', [@artist] %>

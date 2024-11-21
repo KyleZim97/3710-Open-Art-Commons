@@ -1,0 +1,27 @@
+<div class="search-form">
+  <%= form_with url: search_arts_path, method: :get, local: true do |form| %>
+    <div class="mb-3">
+      <%= form.label :artist_name, "Artist", class: "form-label" %>
+      <%= form.text_field :artist_name, class: "form-control", placeholder: "Search by artist name" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :description, "Description", class: "form-label" %>
+      <%= form.text_field :description, class: "form-control", placeholder: "Search by description" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :category, "Art/Photo Category", class: "form-label" %>
+      <%= form.select :category, options_for_select(['Physical Art', 'Photography', 'Digital Art', 'Sculpture']), { include_blank: 'Choose a category' }, class: "form-select" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :tags, "Tags", class: "form-label" %>
+      <%= form.text_field :tags, class: "form-control", placeholder: "Search by tags" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.submit "Search", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
