@@ -1,0 +1,10 @@
+<h1>Editing art</h1>
+
+<%= render "form", art: @art %>
+
+<br>
+
+<div>
+  <%= link_to "Show this art", [@artist, @art] %> |
+  <%= link_to "Back to arts", artist_arts_path(@artist) %>
+</div>

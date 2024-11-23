@@ -5,7 +5,17 @@ Rails.application.routes.draw do
     passwords: 'artists/passwords'
    }
    
-  resources :artists
+  resources :artists, only: [:index, :show, :edit, :update, :destroy] do
+    resources :arts, only: [:index, :show, :edit, :update, :destroy, :new, :create]
+  end
+
+  # route to allow searching all arts independent of the artist
+  resources :arts, only: [] do
+    collection do
+      get :search
+    end
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

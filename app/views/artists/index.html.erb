@@ -1,14 +1,21 @@
 <div class="container mt-5">
   <p style="color: green"><%= notice %></p>
 
-  <h1>Artists</h1>
+  <h1>Search Art</h1>
 
-  <div id="artists">
-    <% @artists.each do |artist| %>
-      <%= render artist %>
-      <p>
-        <%= link_to "Show this artist", artist %>
-      </p>
-    <% end %>
+  <!-- Render the search form partial -->
+  <%= render 'artists/search_form' %>
+
+  <div class="gallery mt-4">
+    <h2>Gallery</h2>
+    <div class="row">
+      <% @arts.each do |art| %>
+        <div class="col-md-3 mb-4">
+          <%= link_to artist_art_path(art.artist, art) do %>
+            <%= image_tag art.art_image.attached? ? art.art_image : 'placeholder_image.png', class: 'img-fluid' %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -4,9 +4,24 @@
   <%= render @artist %>
 
   <div>
-    <%= link_to "Edit this artist", edit_artist_path(@artist) %> |
-    <%= link_to "Back to artists", artists_path %>
+  <%= link_to 'Add art', new_artist_art_path(@artist) %>
+  </div>
 
-    <%= button_to "Destroy this artist", @artist, method: :delete %>
+  <h2>Art</h2>
+  <div id="arts" class="row">
+      <% for art in @artist.arts %>
+        <div class="col-md-3 mb-4">
+          <%= link_to artist_art_path(art.artist, art) do %>
+            <%= image_tag art.art_image.attached? ? art.art_image : 'placeholder_image.png', class: 'img-fluid' %>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+
+  <div>
+    <% if artist_signed_in? && current_artist == @artist %>
+      <%= link_to "Edit profile", edit_artist_path(@artist) %>
+    <% end %>
+    <%= link_to "Back", artists_path %>
   </div>
 </div>
