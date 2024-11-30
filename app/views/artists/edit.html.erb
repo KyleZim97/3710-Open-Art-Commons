@@ -1,11 +1,13 @@
-<h1>Editing artist</h1>
+<div class="container mt-5">
+  <h1>Editing artist</h1>
 
-<%= render "form", artist: @artist %>
+  <%= render "form", artist: @artist %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this artist", @artist %> |
-  <%= link_to "Back to artists", artists_path %>
-  <%= button_to "Delete account", @artist, method: :delete %>
+  <div>
+    <%= link_to "Show this artist", @artist %> |
+    <%= link_to "Back to artists", artists_path %>
+    <%= button_to "Delete account", @artist, method: :delete %>
+  </div>
 </div>
