@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     sessions: 'artists/sessions',
     passwords: 'artists/passwords'
    }
-   
+  
+  # routes for artists and nested arts 
   resources :artists, only: [:index, :show, :edit, :update, :destroy] do
     resources :arts, only: [:index, :show, :edit, :update, :destroy, :new, :create]
   end
