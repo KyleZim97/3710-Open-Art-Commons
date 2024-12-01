@@ -80,6 +80,27 @@ class ArtsController < ApplicationController
     render 'artists/index'
   end
 
+  def download_image
+    @art = Art.find(params[:id])
+    @art.increment!(:download_count)
+    redirect_to rails_blob_path(@art.art_image, disposition: 'attachment')
+  end
+
+  def download_image_with_resolution
+    @art = Art.find(params[:id])
+    width = params[:width].to_i
+    height = params[:height].to_i
+
+    if @art.art_image.attached?
+      # Process the variant
+      variant = @art.resized_variant(width, height)
+      @art.increment!(:download_count)
+      redirect_to rails_representation_url(variant, disposition: 'attachment')
+    else
+      redirect_to root_path, alert: 'Image not found'
+    end
+  end
+
   private
     # creates a local @artist instance variable by finding a artist instance by artist_id
     def get_artist

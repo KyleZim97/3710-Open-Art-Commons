@@ -16,3 +16,11 @@
 body {
     padding-top: 45px; /* Adjust based on the height of your navbar */
   }
+
+.card:hover {
+  transform: scale(1.15);
+}
+
+.card {
+  transition: all 0.6s;
+}

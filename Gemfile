@@ -46,7 +46,7 @@ gem "bootstrap"
 gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 # User authentication https://github.com/heartcombo/devise  (This is a link to a GitHub repository that will help you understand devise)
 gem "devise"

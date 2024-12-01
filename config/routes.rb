@@ -10,10 +10,14 @@ Rails.application.routes.draw do
     resources :arts, only: [:index, :show, :edit, :update, :destroy, :new, :create]
   end
 
-  # route to allow searching all arts independent of the artist
+  # route to allow searching and download count all arts independent of the artist
   resources :arts, only: [] do
     collection do
       get :search
+    end
+    member do
+      get :download_image
+      get :download_image_with_resolution
     end
   end
 

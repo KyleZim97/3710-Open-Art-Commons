@@ -8,4 +8,9 @@ class Art < ApplicationRecord
   validates :tags, presence: true
   validates :category, presence: true
   validates :license_type, presence: true
+
+   # Define variants for different resolutions
+  def resized_variant(width, height)
+      art_image.variant(resize_to_limit: [width, height]).processed
+  end
 end
