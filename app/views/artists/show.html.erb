@@ -11,9 +11,16 @@
   <div id="arts" class="row">
       <% for art in @artist.arts %>
         <div class="col-md-3 mb-4">
-          <%= link_to artist_art_path(art.artist, art) do %>
-            <%= image_tag art.art_image.attached? ? art.art_image : 'placeholder_image.png', class: 'img-fluid' %>
-          <% end %>
+          <div class="card" style="width: 100%;">
+            <%= link_to artist_art_path(art.artist, art) do %>
+              <%= image_tag(art.art_image.attached? ? art.art_image : 'placeholder_image.png', class: 'card-img-top', alt: "#{art.title} image") %>
+            <% end %>
+            <div class="card-body">
+              <h4 class="card-title"><%= art.title %></h4>
+              <p class="card-text"><%= truncate(art.description, length: 100) %></p>
+              <%= link_to 'Details', artist_art_path(art.artist, art), class: 'btn btn-primary' %>
+            </div>
+          </div>
         </div>
       <% end %>
   </div>

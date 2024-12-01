@@ -15,6 +15,7 @@
 */
 body {
     padding-top: 45px; /* Adjust based on the height of your navbar */
+    font-family: "Times New Roman", Times, serif;
   }
 
 .card:hover {
