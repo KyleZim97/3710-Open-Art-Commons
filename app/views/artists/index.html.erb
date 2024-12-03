@@ -1,19 +1,37 @@
 <div class="container mt-5">
   <p style="color: green"><%= notice %></p>
 
-  <h1>Search Art</h1>
-
+  <h1>Search Gallery</h1>
   <!-- Render the search form partial -->
   <%= render 'artists/search_form' %>
-
   <div class="gallery mt-4">
     <h2>Gallery</h2>
+
     <div class="row">
-      <% @arts.each do |art| %>
-        <div class="col-md-3 mb-4">
-          <%= link_to artist_art_path(art.artist, art) do %>
-            <%= image_tag art.art_image.attached? ? art.art_image : 'placeholder_image.png', class: 'img-fluid' %>
-          <% end %>
+      <% if @arts.any? %>
+        <% @arts.each do |art| %>
+          <%= render 'artists/art_search_modal', art: art %>
+
+          <div class="col-md-3 mb-4">
+            <div class="card text-center" style="width: 100%;">
+              <%= link_to '#', data: { bs_toggle: "modal", bs_target: "##{dom_id(art)}" } do %>
+                <%= image_tag(art.art_image.attached? ? art.art_image : 'placeholder_image.png', class: 'card-img-top', alt: "#{art.title} image") %>
+              <% end %>
+              <div class="card-body">
+                <h4 class="card-title"><%= art.title %></h4>
+                <p class="card-text"><%= truncate(art.description, length: 100) %></p>
+                <p class="card-text">
+                  by: 
+                  <%= link_to truncate(art.artist.username, length: 100), artist_path(art.artist), class: 'text-decoration-none' %>
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
+      <% else %>
+        <div class="col-12 text-center">
+          <h4>No images found</h4>
         </div>
       <% end %>
     </div>
