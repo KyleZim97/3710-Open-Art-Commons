@@ -8,25 +8,31 @@
     <h2>Gallery</h2>
 
     <div class="row">
-      <% @arts.each do |art| %>
-        <%= render 'artists/art_search_modal', art: art %>
+      <% if @arts.any? %>
+        <% @arts.each do |art| %>
+          <%= render 'artists/art_search_modal', art: art %>
 
-        <div class="col-md-3 mb-4">
-          <div class="card text-center" style="width: 100%;">
-            <%= link_to '#', data: { bs_toggle: "modal", bs_target: "##{dom_id(art)}" } do %>
-              <%= image_tag(art.art_image.attached? ? art.art_image : 'placeholder_image.png', class: 'card-img-top', alt: "#{art.title} image") %>
-            <% end %>
-            <div class="card-body">
-              <h4 class="card-title"><%= art.title %></h4>
-              <p class="card-text"><%= truncate(art.description, length: 100) %></p>
-              <p class="card-text">
-                by: 
-                <%= link_to truncate(art.artist.username, length: 100), artist_path(art.artist), class: 'text-decoration-none' %>
-              </p>
+          <div class="col-md-3 mb-4">
+            <div class="card text-center" style="width: 100%;">
+              <%= link_to '#', data: { bs_toggle: "modal", bs_target: "##{dom_id(art)}" } do %>
+                <%= image_tag(art.art_image.attached? ? art.art_image : 'placeholder_image.png', class: 'card-img-top', alt: "#{art.title} image") %>
+              <% end %>
+              <div class="card-body">
+                <h4 class="card-title"><%= art.title %></h4>
+                <p class="card-text"><%= truncate(art.description, length: 100) %></p>
+                <p class="card-text">
+                  by: 
+                  <%= link_to truncate(art.artist.username, length: 100), artist_path(art.artist), class: 'text-decoration-none' %>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
+        <% end %>
+      <% else %>
+        <div class="col-12 text-center">
+          <h4>No images found</h4>
+        </div>
       <% end %>
     </div>
   </div>
